@@ -77,9 +77,9 @@ class SoulsEnv(gymnasium.Env, ABC):
         self._game_input = GameInput(self.game_id, game_speed=game_speed)
         self._game_window = GameWindow(self.game_id)
         # Check if the player has loaded into the game
-        if not self.game.is_ingame:
-            logger.error("Player is not loaded into the game")
-            raise GameStateError("Player is not loaded into the game")
+        # if not self.game.is_ingame:
+        #     logger.error("Player is not loaded into the game")
+        #     raise GameStateError("Player is not loaded into the game")
         # Initialize helper variables
         self._game_speed = game_speed
         self._game_state: GameState = None
@@ -88,7 +88,7 @@ class SoulsEnv(gymnasium.Env, ABC):
         self._lock_on_timer = 0  # Steps until "lock on" press is allowed
         self._is_init = False
         self.terminated = False
-        self._set_game_properties()
+        # self._set_game_properties()
         logger.debug("Env init complete")
 
     @property

@@ -1,8 +1,8 @@
 import numpy as np
 import platform
 
-if platform.system() == "Windows":  # Windows imports, ignore for unix to make imports work
-    from soulsgym.core.game_window._C.window_capture import WindowCapture as _WindowCapture
+
+from soulsgym.core.game_window._C.window_capture import WindowCapture as _WindowCapture
 
 
 class WindowCapture:

@@ -19,9 +19,10 @@ from soulsgym.core.memory_manipulator import MemoryManipulator
 from soulsgym.core.game_input import GameInput
 from soulsgym.core.game_window import GameWindow
 from soulsgym.core.speedhack import SpeedHackConnector
-from soulsgym.core.static import keybindings, keymap, actions, coordinates, player_animations
-from soulsgym.core.static import critical_player_animations, boss_animations, player_stats
-from soulsgym.core.static import bonfires, address_bases, addresses, address_base_patterns
+from soulsgym.core.static import keybindings, keymap, actions
+# from soulsgym.core.static import keybindings, keymap, actions, coordinates, player_animations
+# from soulsgym.core.static import critical_player_animations, boss_animations, player_stats
+# from soulsgym.core.static import bonfires, address_bases, addresses, address_base_patterns
 
 
 @dataclass
@@ -52,15 +53,15 @@ class StaticGameData:
         self.keybindings = keybindings[game_id]
         self.keymap = keymap[game_id]
         self.actions = actions[game_id]
-        self.coordinates = coordinates[game_id]
-        self.player_animations = player_animations[game_id]
-        self.critical_player_animations = critical_player_animations[game_id]
-        self.boss_animations = boss_animations[game_id]
-        self.player_stats = player_stats[game_id]
-        self.bonfires = bonfires[game_id]
-        self.address_bases = address_bases[game_id]
-        self.addresses = addresses[game_id]
-        self.address_base_patterns = address_base_patterns[game_id]
+        # self.coordinates = coordinates[game_id]
+        # self.player_animations = player_animations[game_id]
+        # self.critical_player_animations = critical_player_animations[game_id]
+        # self.boss_animations = boss_animations[game_id]
+        # self.player_stats = player_stats[game_id]
+        # self.bonfires = bonfires[game_id]
+        # self.address_bases = address_bases[game_id]
+        # self.addresses = addresses[game_id]
+        # self.address_base_patterns = address_base_patterns[game_id]
 
 
 class Game(ABC):

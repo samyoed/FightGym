@@ -142,3 +142,7 @@ soulsgym/core/game_window/_C/packages
 !soulsgym/core/game_window/_C/window_capture.pyd
 
 ce_tables/notes.txt
+
+board/
+logs/
+TESTING/

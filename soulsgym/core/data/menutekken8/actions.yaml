@@ -1,0 +1,14 @@
+# Directional
+0: ["up"]
+1: ["down"]
+2: ["left"]
+3: ["right"]
+# Action buttons
+8: ["one"]
+9: ["two"]
+10: ["three"]
+11: ["four"]
+12: ["select"]
+13: ["start"]
+14: ["three", "start"]
+

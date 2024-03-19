@@ -18,6 +18,18 @@ if platform.system() == "Windows":  # Windows imports, ignore for unix to make i
 
 from soulsgym.core.game_window.window_capture import WindowCapture
 
+"""some titles are hard to get the full name of so this is to help the edge cases"""
+class GetWindow:
+    def __init__(self):
+        self.hwnd_text = None
+
+    def get_title_from_partial(self, title):
+        def callback(hwnd, extra):
+            if title in win32gui.GetWindowText(hwnd):
+                self.hwnd_text = win32gui.GetWindowText(hwnd)
+
+
+        win32gui.EnumWindows(callback, None)
 
 class GameWindow:
     """Provide an interface with the game window.
@@ -26,8 +38,8 @@ class GameWindow:
     larger game window directly corresponds to larger images and more required computational power
     for processing.
     """
-    window_ids = {"DarkSoulsIII": "DARK SOULS III", "EldenRing": "ELDEN RING™"}
-    game_resolution = {"DarkSoulsIII": (800, 450), "EldenRing": (800, 450)}
+    window_ids = {"DarkSoulsIII": "DARK SOULS III", "EldenRing": "ELDEN RING™", "Tekken8": "TEKKEN"}
+    game_resolution = {"DarkSoulsIII": (800, 450), "EldenRing": (800, 450), "Tekken8": (800, 450)}
 
     def __init__(self,
                  game_id: str,
@@ -48,7 +60,10 @@ class GameWindow:
         self.img_width = img_width or 160
         self._process_fn = processing or self._default_processing
         # Initialize the window capture
-        self.hwnd = win32gui.FindWindow(None, self.window_ids[game_id])
+        getWindow = GetWindow()
+        partial_title = self.window_ids[self.game_id]  # Example: looking for windows that include "TEKKEN" in their title
+        getWindow.get_title_from_partial(partial_title)
+        self.hwnd = win32gui.FindWindow(None, getWindow.hwnd_text)
         if not self.hwnd:
             raise Exception('Window not found: {}'.format(game_id))
         self._window_capture = WindowCapture()
@@ -98,6 +113,7 @@ class GameWindow:
 
         Also sets the cursor within the game window.
         """
+        print(self.hwnd)
         win32gui.SetForegroundWindow(self.hwnd)
         time.sleep(0.1)
         left, top, _, _ = win32gui.GetWindowRect(self.hwnd)
@@ -163,3 +179,4 @@ class GameWindow:
             bottom_crop = bottom_crop - 1
             top_crop = top_crop + res_diff[0] - 1
         return np.array([top_crop, bottom_crop]), np.array([left_crop, right_crop])
+        

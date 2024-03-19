@@ -64,3 +64,7 @@ register(id="SoulsGymVordt-v0",
          entry_point='soulsgym.envs.darksouls3.vordt:VordtEnv',
          max_episode_steps=3000,
          nondeterministic=True)
+register(id="Tekken8",
+         entry_point='soulsgym.envs.tekken.tekkenv:Tekkenv',
+         max_episode_steps=600,
+         nondeterministic=True)

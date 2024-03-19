@@ -305,6 +305,9 @@ class MemoryManipulator(metaclass=Singleton):
                 game = "DarkSoulsIII"
             case "eldenring.exe":  # Not an error, eldenring.exe isn't capitalized
                 game = "EldenRing"
+            case "TEKKEN 8.exe":
+                game = "Tekken8"
+                return {}
             case _:
                 raise ValueError(f"Process name '{process_name}' not supported!")
         if address_bases[game] is None:

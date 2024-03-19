@@ -10,7 +10,7 @@ from pathlib import Path
 import yaml
 import numpy as np
 
-_games = {"DarkSoulsIII": "darksouls3", "EldenRing": "eldenring"}  # Game ID and location
+_games = {"DarkSoulsIII": "darksouls3", "EldenRing": "eldenring", "Tekken8":"tekken8","MenuTekken8":"menutekken8"}  # Game ID and location
 
 _data_paths = {
     game: Path(__file__).resolve().parent / "data" / game_location
@@ -123,32 +123,32 @@ keybindings, keymap = _load_keybindings_and_mapping()  # Load here to allow docu
 actions = _load_actions()
 
 #: Dictionary mapping of game coordinates for each boss fight.
-coordinates = _load_coordinates()
+# coordinates = _load_coordinates()
 
 #: Dictionary of player animations. All animations have an animation timing during which the player
 #: cannot take any action, and a unique ID.
-player_animations = {}
+# player_animations = {}
 #: ``critical`` animations should not occur during normal operation and can be disregarded by users.
 #: They require special recovery handling by the gym.
-critical_player_animations = {}
+# critical_player_animations = {}
 #: Dictionary of boss animations. Each boss has its own dictionary accessed by its boss ID.
 #: Individual boss animations are separated into ``attacks``, ``movement`` and ``all``. ``all``
 #: animations have a unique ID.
-boss_animations = {}
+# boss_animations = {}
 
-player_animations, critical_player_animations, boss_animations = _load_animations()
+# player_animations, critical_player_animations, boss_animations = _load_animations()
 
 #: Dictionary of player stats for each boss fight. Player stats are mapped by boss ID.
-player_stats = _load_player_stats()
+# player_stats = _load_player_stats()
 
 #: Dictionary mapping of bonfire IDs to ingame integer IDs.
-bonfires = _load_bonfires()
+# bonfires = _load_bonfires()
 
 #: Dictionary of recurring initial base address offset from the game's ``base_address``
 address_bases = {}
-#: Dictionary of address offsets for the pointer chain to each game property's memory location
+# #: Dictionary of address offsets for the pointer chain to each game property's memory location
 addresses = {}
 #: Dictionary of patterns that can be scanned by AOB modules to locate the base addresses
 address_base_patterns = {}
 
-address_bases, addresses, address_base_patterns = _load_addresses()
+# address_bases, addresses, address_base_patterns = _load_addresses()

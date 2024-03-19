@@ -142,6 +142,19 @@ class GameInput:
         time.sleep(press_time)
         self._release_key(self.keymap[self.keybindings[action]])
 
+    def multi_action(self, actions: list[str], press_time: float = 0.15):
+        """Perform multiple actions for a given amount of time.
+
+        Args:
+            actions: The actions to trigger (see :data:`.static.keybindings`).
+            press_time: The duration of the key press.
+        """
+        for action in actions:
+            self._press_key(self.keymap[self.keybindings[action]])
+        time.sleep(press_time)
+        for action in actions:
+            self._release_key(self.keymap[self.keybindings[action]])
+
     @staticmethod
     def _press_key(key_hex_code: int):
         """Press a key identified by its hex code.
